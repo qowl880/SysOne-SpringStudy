@@ -41,8 +41,32 @@
 			<c:otherwise>
 				<h3>과일이 아닙니다. </h3>
 			</c:otherwise>
-			
 		</c:choose>
+<%
+	/* JSPL  사용 */
+	String[] list = {"A", "B", "C", "D", "E"};
+	request.setAttribute("list", list);
+%>
+
+	<c:forEach var ="i"  begin ="1" end="3">
+		${list[i]} .
+	</c:forEach>
+	
+	<c:forEach var="item" items="${list }" varStatus="idx">
+		<div>${idx.count }. ${item }</div>
+	</c:forEach>
+	
+	<h3> ${fn:length(list) }</h3>
+ 	<h3>${fn:replace("A,B,C,D,E" ,",","-")}</h3>
+ 	
+ 	<fmt:formatNumber value="500000" type="currency" /> <br>
+ 	<fmt:formatNumber value="500000" pattern="###,###,###.00" /> <br>
+ 	
+ 	<jsp:useBean id="today" class="java.util.Date"/>
+ 	<div>${today }</div>
+ 	<fmt:formatDate value="${today }" type="date"/>
+ 	<fmt:formatDate value="${today }" type="time"/>
+ 	<fmt:formatDate value="${today }" pattern="yyyy-MM-dd hh:mm:ss"/>
 	</body>
 </html>
 
