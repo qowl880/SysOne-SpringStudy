@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="jakarta.tags.core" %>
 <%@ taglib prefix="fmt" uri="jakarta.tags.fmt" %>
-<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>
+<%@ taglib prefix="fn" uri="jakarta.tags.functions" %>         <!-- 지시자 -->
 <!DOCTYPE html>
 <html>
 	<head>
@@ -62,7 +62,7 @@
  	<fmt:formatNumber value="500000" type="currency" /> <br>
  	<fmt:formatNumber value="500000" pattern="###,###,###.00" /> <br>
  	
- 	<jsp:useBean id="today" class="java.util.Date"/>
+ 	<jsp:useBean id="today" class="java.util.Date"/>	
  	<div>${today }</div>
  	<fmt:formatDate value="${today }" type="date"/>
  	<fmt:formatDate value="${today }" type="time"/>
