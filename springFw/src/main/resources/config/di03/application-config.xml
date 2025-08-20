@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xmlns:context="http://www.springframework.org/schema/context"
+    xmlns:p="http://www.springframework.org/schema/p"
+    xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
+        http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
+    
+    <!-- Controller에서 @Qualifier("niceService")를 통해 Service지정하지 않고 Bean파일을 통해 지정하는 방법  -->
+    <bean id="helloService" class = "app.labs.ex03.di03.NiceService"/>
+        
+        <!-- Bean을 통한 Cotroller, Service를 사용하기 위한 Bean 등록 -->
+        <!-- 여러 경로를 등록할 경우 , 를 통해 등록 가능  -->
+	<context:component-scan base-package="app.labs.ex03.di03, app.labs.ex03.di02"/>
+	
+	
+</beans>
