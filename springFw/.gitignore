@@ -2,4 +2,5 @@
 /.settings/
 /target/
 /Users/
-/..DS_Store
+**/.DS_Store
+/.factorypath
