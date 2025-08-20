@@ -16,10 +16,10 @@ public class HelloService implements IHelloService {
 		String message = "Hello~~~~" + name;
 			
 		// 4) AOP 예외 처리 
-		int rand = (int)(Math.random() * 10);
-		if(rand < 5) {
-			throw new RuntimeException("강제예외 발생");
-		}
+//		int rand = (int)(Math.random() * 10);
+//		if(rand < 5) {
+//			throw new RuntimeException("강제예외 발생");
+//		}
 		return message;
 	}
 

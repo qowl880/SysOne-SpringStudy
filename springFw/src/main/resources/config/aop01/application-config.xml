@@ -26,7 +26,8 @@
 		<aop:aspect ref="helloLog">
 <!-- 			<aop:after method="log" pointcut-ref="helloPoint"/> -->
 <!-- 			<aop:after-returning method="resultLog" pointcut-ref="helloPoint" returning="resultObj"/> -->
-				<aop:after-throwing method="exceptionLog" pointcut-ref="helloPoint" throwing="exception"/>
+<!-- 				<aop:after-throwing method="exceptionLog" pointcut-ref="helloPoint" throwing="exception"/> -->
+				<aop:around method="aroundLog" pointcut-ref="helloPoint"/>
 		</aop:aspect>
 	</aop:config>
 	
