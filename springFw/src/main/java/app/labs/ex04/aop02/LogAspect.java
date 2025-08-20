@@ -1,7 +1,10 @@
 package app.labs.ex04.aop02;
 
 import org.aspectj.lang.JoinPoint;
+import org.aspectj.lang.ProceedingJoinPoint;
+import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
+import org.aspectj.lang.annotation.Around;
 import org.aspectj.lang.annotation.Aspect;
 import org.aspectj.lang.annotation.Before;
 import org.aspectj.lang.annotation.Pointcut;
@@ -29,5 +32,31 @@ public class LogAspect {
 	public void afterLog(JoinPoint joinpoint, Object msg) {
 		System.out.println(">>> Log:" +new java.util.Date());
 		System.out.println(">>> msg:" + msg.toString());
+	}
+	
+	@Around("helloPointCut() || goodByePointcut()")
+	public Object trace(ProceedingJoinPoint joinpoint) throws Throwable{
+		Signature s = joinpoint.getSignature();
+		String methodName = s.getName();
+		System.out.println("[Log]Before:" + methodName+" start");
+		
+		long startTIme = System.nanoTime();
+		
+		 Object result = null;
+		 
+		 try {
+			 result = joinpoint.proceed();
+		 }catch(Exception e) {
+				System.out.println("[Log]Exception:" + methodName+ e.getMessage());
+		 }
+		 finally {
+				System.out.println("[Log]Finally:" + methodName);
+		 }
+		 
+		 long endTime = System.nanoTime();
+		 System.out.println("[Log]After :" + methodName+" end");
+		 System.out.println("[Log] " + (endTime - startTIme) + "ns"); 
+			
+		 return result;
 	}
 }
