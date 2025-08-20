@@ -24,7 +24,9 @@
 		<aop:pointcut expression = "execution(* app.labs.ex04..HelloService.sayHello(..))" id="helloPoint"/>
 		<!--  포인트 컷에 지정할 공통코드와 시점을 지정 -->
 		<aop:aspect ref="helloLog">
-			<aop:after      method="log" pointcut-ref="helloPoint"/>
+<!-- 			<aop:after method="log" pointcut-ref="helloPoint"/> -->
+<!-- 			<aop:after-returning method="resultLog" pointcut-ref="helloPoint" returning="resultObj"/> -->
+				<aop:after-throwing method="exceptionLog" pointcut-ref="helloPoint" throwing="exception"/>
 		</aop:aspect>
 	</aop:config>
 	

@@ -15,6 +15,11 @@ public class HelloService implements IHelloService {
 		// 3) Proxy 구현 - HelloServiceProxy 생성 
 		String message = "Hello~~~~" + name;
 			
+		// 4) AOP 예외 처리 
+		int rand = (int)(Math.random() * 10);
+		if(rand < 5) {
+			throw new RuntimeException("강제예외 발생");
+		}
 		return message;
 	}
 
